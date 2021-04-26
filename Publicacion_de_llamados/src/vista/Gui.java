@@ -17,6 +17,8 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 import javax.swing.BoxLayout;
+import javax.swing.DefaultListModel;
+
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -43,6 +45,10 @@ public class Gui extends JFrame {
 	private JPanel panel_list_dni;
 	private JLabel label_dni;
 	private JList list_dni;
+	
+	//list models
+	DefaultListModel modeloListaBox = new DefaultListModel();
+	DefaultListModel modeloListaDni = new DefaultListModel();
 
 	/**
 	 * Launch the application.
@@ -122,6 +128,7 @@ public class Gui extends JFrame {
 		
 		this.list_box = new JList();
 		this.panel_list_box.add(this.list_box, BorderLayout.CENTER);
+		this.list_box.setModel(this.modeloListaBox); //agrego modelo de lista box
 		
 		this.contenedor_der = new JPanel();
 		this.contenedor_centro.add(this.contenedor_der, BorderLayout.CENTER);
@@ -143,6 +150,29 @@ public class Gui extends JFrame {
 		this.list_dni = new JList();
 		this.list_dni.setBorder(new EmptyBorder(0, 1, 0, 0));
 		this.panel_list_dni.add(this.list_dni, BorderLayout.CENTER);
+		this.list_dni.setModel(this.modeloListaDni); //agrego modelo de lista dni
 	}
+	
+	//metodos
+	public void publicarTurno() { //invocado desde controller con parametro Turno turno (pendiente por librerias)
+		//parametros inventados hasta que se implemente TURNO
+		String dni = "41.123.123";
+		int box = 5;
+		//---------------------------------------------------
+		
+		//poner texto en list_box y list_dni
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

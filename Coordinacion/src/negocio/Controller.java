@@ -2,7 +2,14 @@ package negocio;
 
 public class Controller {
 
-	//networking?
-	//como se que me está invocando un registro de clientes u otra app?
+	private static Controller instance = null;
+	
+	//patron Singleton
+	public static Controller getInstance() {
+		if(instance == null) {
+			instance = new Controller();
+		}
+		return instance;
+	}
 	
 }
