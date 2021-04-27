@@ -47,8 +47,8 @@ public class Gui extends JFrame {
 	private JList list_dni;
 	
 	//list models
-	DefaultListModel modeloListaBox = new DefaultListModel();
-	DefaultListModel modeloListaDni = new DefaultListModel();
+	DefaultListModel<String> modeloListaBox;
+	DefaultListModel<String> modeloListaDni;
 
 	/**
 	 * Launch the application.
@@ -76,6 +76,10 @@ public class Gui extends JFrame {
 		this.contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		this.contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(this.contentPane);
+		
+		//######### new de los DefaultListModels
+		this.modeloListaBox = new DefaultListModel<String>(); //box list model string
+		this.modeloListaDni = new DefaultListModel<String>(); //dni list model string
 		
 		this.panel = new JPanel();
 		this.contentPane.add(this.panel, BorderLayout.CENTER);
@@ -127,6 +131,7 @@ public class Gui extends JFrame {
 		this.panel_list_box.setLayout(new BorderLayout(0, 0));
 		
 		this.list_box = new JList();
+		this.list_box.setFont(new Font("Tahoma", Font.PLAIN, 50));
 		this.panel_list_box.add(this.list_box, BorderLayout.CENTER);
 		this.list_box.setModel(this.modeloListaBox); //agrego modelo de lista box
 		
@@ -148,20 +153,29 @@ public class Gui extends JFrame {
 		this.panel_list_dni.setLayout(new BorderLayout(0, 0));
 		
 		this.list_dni = new JList();
+		this.list_dni.setFont(new Font("Tahoma", Font.PLAIN, 50));
 		this.list_dni.setBorder(new EmptyBorder(0, 1, 0, 0));
 		this.panel_list_dni.add(this.list_dni, BorderLayout.CENTER);
 		this.list_dni.setModel(this.modeloListaDni); //agrego modelo de lista dni
 	}
 	
 	//metodos
-	public void publicarTurno() { //invocado desde controller con parametro Turno turno (pendiente por librerias)
-		//parametros inventados hasta que se implemente TURNO
-		String dni = "41.123.123";
-		int box = 5;
-		//---------------------------------------------------
+	
+	//publica un nuevo turno en los JList, si hay ya 8 turnos (0 a 7) borra el de indice 0 y agrega el nuevo, sino solo agrega el nuevo
+	//incovado desde el controller cuando quiere hacer una publicación
+	public void publicarTurno(String box, String dni) {
 		
-		//poner texto en list_box y list_dni
+		if( 7 < this.modeloListaBox.size() ) {
+			this.modeloListaBox.remove(0);
+		}
+		this.modeloListaBox.addElement(box);
 		
+		if( 7 < this.modeloListaDni.size() ) {
+			this.modeloListaDni.remove(0);
+		}
+		this.modeloListaDni.addElement(dni);
+		
+		this.repaint();
 	}
 	
 	
