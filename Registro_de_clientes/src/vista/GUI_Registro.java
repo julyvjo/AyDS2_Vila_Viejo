@@ -349,8 +349,8 @@ public class GUI_Registro extends JFrame implements ActionListener{
 		text.append(this.textFieldDNI.getText());
 		if(e.getActionCommand().equals("Ok")) {
 			if(text.length() > 6) {
-				//ActionEvent event = new ActionEvent(text, 0, "Ok");
-				this.actionListener.actionPerformed(null);
+				ActionEvent event = new ActionEvent(text.toString(), 0, "Ok");
+				this.actionListener.actionPerformed(event);
 				this.textFieldDNI.setText("");
 			}
 		}
@@ -364,11 +364,6 @@ public class GUI_Registro extends JFrame implements ActionListener{
 					text.append(e.getActionCommand());
 			this.textFieldDNI.setText(text.toString());
 		}
-	}
-	
-	
-	public String getInput() {
-		return this.textFieldDNI.getText();
 	}
 	
 }

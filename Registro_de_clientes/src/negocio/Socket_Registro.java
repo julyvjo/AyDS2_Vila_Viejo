@@ -1,0 +1,36 @@
+package negocio;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
+import java.net.Socket;
+
+import modelo.Cliente;
+
+public class Socket_Registro {
+	
+	public void agregarCliente(Cliente cliente) {
+		try {
+			Socket socket = new Socket("localhost",4444);
+			//PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+			//BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			//out.println("mensaje");
+			
+			//out.print(cliente);
+			
+			
+			ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream());
+			
+			output.writeObject(cliente);
+			
+			
+			output.close();
+			socket.close();
+			
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+	}
+	
+}

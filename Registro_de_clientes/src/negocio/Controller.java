@@ -2,6 +2,8 @@ package negocio;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import factory.ClienteFactory;
 import modelo.Cliente;
 import vista.GUI_Registro;
 
@@ -9,6 +11,7 @@ public class Controller implements ActionListener{
 
 	private static Controller instance = null;
 	private GUI_Registro ventana;
+	private Socket_Registro socketRegistro = new Socket_Registro();
 	
 	//constructor privado por patrón Singleton
 	private Controller() {
@@ -25,20 +28,11 @@ public class Controller implements ActionListener{
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		this.consultaInput();
-	}
-
-	public void consultaInput() {
-		String dni = this.ventana.getInput();
-		this.agregarCliente(dni);
-	}
-	
-	public void agregarCliente(String dni) {
-		Cliente cliente = new Cliente(dni);
-		//Pasarlo al controller de coordinacion
+	public void actionPerformed(ActionEvent e) { 
 		
-		System.out.println(cliente.getDni());
+		String dni = (String) e.getSource(); //el evento e trae el dni por parametro
+		Cliente cliente = ClienteFactory.getCliente(dni);
+		this.socketRegistro.agregarCliente(cliente);
 	}
 	
 }
