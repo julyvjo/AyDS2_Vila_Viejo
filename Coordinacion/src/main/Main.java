@@ -8,6 +8,7 @@ public class Main {
 
 		Controller controller = Controller.getInstance();
 		
+		controller.listen(); //pone a escuchar a los sockets ssr y ssl
 		
 	}
 
