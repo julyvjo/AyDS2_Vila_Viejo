@@ -14,11 +14,18 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.border.EtchedBorder;
+
+import modelo.Cliente;
+import negocio.Controller;
+
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.FlowLayout;
 
-public class GUI_Box extends JFrame {
+public class GUI_Box extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
 	private JPanel panel1;
@@ -39,27 +46,16 @@ public class GUI_Box extends JFrame {
 	private JPanel panelBottom;
 	private JPanel panelBox;
 	private JLabel lblBox;
+	ActionListener actionListener;
+	private JPanel panelNro;
+	private JLabel lblBoxNro;
+	private JLabel lblNroDNI;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					GUI_Box frame = new GUI_Box();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
 	 */
-	public GUI_Box() {
+	public GUI_Box(String nroBox) {
 		setTitle("Box");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 680, 600);
@@ -113,6 +109,8 @@ public class GUI_Box extends JFrame {
 		btnProximo.setForeground(Color.DARK_GRAY);
 		btnProximo.setFont(new Font("Century Gothic", Font.BOLD, 22));
 		btnProximo.setBackground(new Color(102, 204, 102));
+		btnProximo.setActionCommand("Proximo");
+		btnProximo.addActionListener(this);
 		
 		this.panelDER = new JPanel();
 		panel1.add(panelDER);
@@ -141,12 +139,17 @@ public class GUI_Box extends JFrame {
 		
 		this.panelDNI = new JPanel();
 		panelDatos.add(panelDNI);
-		panelDNI.setLayout(new BorderLayout(0, 0));
+		panelDNI.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		this.lblDNI = new JLabel("DNI: ********");
+		this.lblDNI = new JLabel("DNI:");
 		lblDNI.setFont(new Font("Century Gothic", Font.PLAIN, 24));
 		lblDNI.setForeground(Color.DARK_GRAY);
-		panelDNI.add(lblDNI, BorderLayout.CENTER);
+		panelDNI.add(lblDNI);
+		
+		lblNroDNI = new JLabel("");
+		lblNroDNI.setForeground(Color.DARK_GRAY);
+		lblNroDNI.setFont(new Font("Century Gothic", Font.PLAIN, 24));
+		panelDNI.add(lblNroDNI);
 		
 		this.panelBottom = new JPanel();
 		panel2.add(panelBottom);
@@ -156,12 +159,40 @@ public class GUI_Box extends JFrame {
 		panelBottom.add(panelBox, BorderLayout.EAST);
 		panelBox.setLayout(new BorderLayout(0, 0));
 		
-		this.lblBox = new JLabel("Nro Box: **");
+		panelNro = new JPanel();
+		panelBox.add(panelNro, BorderLayout.SOUTH);
+		panelNro.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		
+		this.lblBox = new JLabel("Nro Box:");
+		panelNro.add(lblBox);
 		lblBox.setForeground(Color.DARK_GRAY);
 		lblBox.setFont(new Font("Century Gothic", Font.PLAIN, 18));
-		panelBox.add(lblBox, BorderLayout.SOUTH);
+		
+		lblBoxNro = new JLabel(nroBox);
+		lblBoxNro.setForeground(Color.DARK_GRAY);
+		lblBoxNro.setFont(new Font("Century Gothic", Font.PLAIN, 18));
+		panelNro.add(lblBoxNro);
 		
 		JPanel panelEmpty1 = new JPanel();
 		JPanel panelEmpty2 = new JPanel();
+		
+		this.setVisible(true);
 	}
+
+
+	public void setActionListener(ActionListener actionListener) {
+		this.actionListener = actionListener;
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		ActionEvent event = new ActionEvent(this.lblBoxNro.getText(), 0, "Proximo");
+		this.actionListener.actionPerformed(event);
+	}
+
+	public void mostrarCliente(Cliente cliente) {
+		this.lblNroDNI.setText(cliente.getDni());
+	}
+
+
 }
