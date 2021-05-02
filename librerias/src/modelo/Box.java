@@ -1,6 +1,8 @@
 package modelo;
 
-public class Box {
+import java.io.Serializable;
+
+public class Box implements Serializable{
 
 	private int numero_box;
 

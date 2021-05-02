@@ -36,7 +36,7 @@ public class Controller {
 	}
 	
 	public void agregarCliente(Cliente cliente) {
-		this.cola.agregarCliente(cliente);
+		//this.cola.agregarCliente(cliente);
 	}
 	
 	public void atenderLlamado(Box box) {

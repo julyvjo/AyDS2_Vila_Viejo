@@ -32,7 +32,7 @@ public class Controller implements ActionListener{
 		if(e.getActionCommand().equals("Proximo")) {
 			Box box = new Box(Integer.parseInt((String)e.getSource()));
 			Cliente cliente = (Cliente) this.socketLlamado.getCliente(box);
-			//this.ventana.mostrarCliente(cliente);
+			this.ventana.mostrarCliente(cliente);
 		}
 	}
 	
