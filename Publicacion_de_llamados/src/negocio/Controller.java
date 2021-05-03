@@ -28,7 +28,10 @@ public class Controller {
 	//metodos
 	
 	public void listen() {
-		this.sp.run();
+		
+		Thread hilosp = new Thread(this.sp);
+		
+		hilosp.start();
 	}
 	
 	//llama al metodo publicarTurno de la ventana pasandole los atributos para cada defaultlistmodel (box y dni)

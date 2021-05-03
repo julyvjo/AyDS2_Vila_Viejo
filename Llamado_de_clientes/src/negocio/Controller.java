@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import modelo.Box;
 import modelo.Cliente;
+import modelo.Turno;
 import vista.GUI_Box;
 
 public class Controller implements ActionListener{
@@ -31,8 +32,8 @@ public class Controller implements ActionListener{
 	public void actionPerformed(ActionEvent e) { 
 		if(e.getActionCommand().equals("Proximo")) {
 			Box box = new Box(Integer.parseInt((String)e.getSource()));
-			Cliente cliente = (Cliente) this.socketLlamado.getCliente(box);
-			this.ventana.mostrarCliente(cliente);
+			Turno turno = (Turno) this.socketLlamado.getCliente(box);
+			this.ventana.mostrarCliente(turno.getCliente().getDni()); //paso el dni a la ventana para publicar
 		}
 	}
 	

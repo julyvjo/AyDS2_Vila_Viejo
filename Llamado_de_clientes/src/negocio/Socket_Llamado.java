@@ -6,11 +6,12 @@ import java.net.Socket;
 
 import modelo.Box;
 import modelo.Cliente;
+import modelo.Turno;
 
 public class Socket_Llamado {
 
-	public Cliente getCliente(Box box) {
-		Cliente cliente = null;
+	public Turno getCliente(Box box) {
+		Turno turno = null;
 		try {
 			Socket socket = new Socket("localhost",5555);
 			
@@ -18,8 +19,8 @@ public class Socket_Llamado {
 			output.writeObject(box);
 			
 			ObjectInputStream input = new ObjectInputStream(socket.getInputStream());
-			//cliente = (Cliente) input.readObject();
-			cliente = new Cliente("37398782");
+			turno = (Turno) input.readObject();
+			//cliente = new Cliente("37398782");
 			
 			output.close();
 			input.close();
@@ -28,7 +29,7 @@ public class Socket_Llamado {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		return cliente;
+		return turno;
 	}
 	
 }

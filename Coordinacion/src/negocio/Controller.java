@@ -7,6 +7,7 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import excepciones.ColaVaciaException;
 import modelo.Box;
 import modelo.Cliente;
 import modelo.Cola;
@@ -31,26 +32,29 @@ public class Controller {
 	}
 	
 	public void listen() {
-		this.ssr.run();
-		this.ssl.run();
+		
+		Thread hilossr = new Thread(this.ssr);
+		Thread hilossl = new Thread(this.ssl);
+		
+		hilossr.start();
+		hilossl.start();
+		
 	}
 	
 	public void agregarCliente(Cliente cliente) {
-		//this.cola.agregarCliente(cliente);
+		this.cola.agregarCliente(cliente);
 	}
 	
-	public void atenderLlamado(Box box) {
+	public Turno getTurno(Box box) throws ColaVaciaException {
 		
-		//recibe el box que realiza el llamado por parámetro
+		Turno turno = null;
 		
-		//saca de la Queue al cliente necesario si existe (si no existe que se hace?)
+		Cliente cliente;
+		cliente = this.cola.siguiente();
 		
-		//fabrica un nuevo turno con cliente extraido + box (lo crea el mismo o llama un factory?)
-		
-		//####de alguna forma debe devolverle al box que llama el cliente que le corresponde atender####
-		
-		//llama a this.publicarTurno(turno) con el turno creado como parámetro
-		
+		turno = new Turno(cliente, box);
+			
+		return turno;
 	}
 	
 	public void publicarTurno(Turno turno) {

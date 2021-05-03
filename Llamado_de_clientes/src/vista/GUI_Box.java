@@ -1,7 +1,6 @@
 package vista;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -15,8 +14,6 @@ import java.awt.Font;
 import java.awt.Color;
 import javax.swing.border.EtchedBorder;
 
-import modelo.Cliente;
-import negocio.Controller;
 
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
@@ -190,8 +187,8 @@ public class GUI_Box extends JFrame implements ActionListener{
 		this.actionListener.actionPerformed(event);
 	}
 
-	public void mostrarCliente(Cliente cliente) {
-		this.lblNroDNI.setText(cliente.getDni());
+	public void mostrarCliente(String dni) {
+		this.lblNroDNI.setText(dni);
 	}
 
 

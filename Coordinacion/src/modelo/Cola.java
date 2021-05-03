@@ -1,5 +1,6 @@
 package modelo;
 
+import java.util.LinkedList;
 import java.util.NoSuchElementException;
 import java.util.PriorityQueue;
 import java.util.Queue;
@@ -8,7 +9,7 @@ import excepciones.ColaVaciaException;
 
 public class Cola {
 
-	private Queue<Cliente> cola = new PriorityQueue<Cliente>();
+	private Queue<Cliente> cola = new LinkedList<Cliente>();
 	
 //getters
 	public Queue<Cliente> getClientes() {
