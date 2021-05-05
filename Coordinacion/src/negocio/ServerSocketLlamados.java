@@ -4,6 +4,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.concurrent.TimeUnit;
 
 import excepciones.ColaVaciaException;
 import modelo.Box;
@@ -26,22 +27,17 @@ public class ServerSocketLlamados implements Runnable{
 				ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream());
 				ObjectInputStream input = new ObjectInputStream(socket.getInputStream());
 				Box box = (Box) input.readObject();
-					
-				System.out.println("Box conectado = " + box.getNumero_box() + "\n");
-				
-				//socket.getRemoteSocketAddress();
 				
 				//pido turno al controller pasandole el box que me llama
 				try {
-					Turno turno = Controller.getInstance().getTurno(box);
 					
-					//devuelve el turno a la componente de llamados
-					output.writeObject(turno);
-					//invoca al controller para enviar el turno a la componente de publicacion
-					Controller.getInstance().publicarTurno(turno);
+					Turno turno = Controller.getInstance().getTurno(box); //podria tirar excepcion cola vacia o interrupted
+					
+					output.writeObject(turno); //devuelve el turno a la componente de llamados
 					
 				} catch (ColaVaciaException e) { //en caso de que la cola este vacia
-					e.printStackTrace();
+					Controller.getInstance().notificar("nuevo turno = [ Null ] " + "[ box: " + box.getNumero_box() + " ]");
+					output.writeObject(null);
 				}
 				
 				input.close();

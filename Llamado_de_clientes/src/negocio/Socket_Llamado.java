@@ -20,7 +20,6 @@ public class Socket_Llamado {
 			
 			ObjectInputStream input = new ObjectInputStream(socket.getInputStream());
 			turno = (Turno) input.readObject();
-			//cliente = new Cliente("37398782");
 			
 			output.close();
 			input.close();

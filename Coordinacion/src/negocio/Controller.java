@@ -1,12 +1,5 @@
 package negocio;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.ObjectInputStream;
-import java.io.PrintWriter;
-import java.net.ServerSocket;
-import java.net.Socket;
-
 import excepciones.ColaVaciaException;
 import modelo.Box;
 import modelo.Cliente;
@@ -41,11 +34,14 @@ public class Controller {
 		
 	}
 	
-	public void agregarCliente(Cliente cliente) {
+	
+	public synchronized void agregarCliente(Cliente cliente) {
+		
 		this.cola.agregarCliente(cliente);
+		this.notificar("cliente registrado [ dni: " + cliente.getDni() + " ]");
 	}
 	
-	public Turno getTurno(Box box) throws ColaVaciaException {
+	public synchronized Turno getTurno(Box box) throws ColaVaciaException {
 		
 		Turno turno = null;
 		
@@ -53,12 +49,19 @@ public class Controller {
 		cliente = this.cola.siguiente();
 		
 		turno = new Turno(cliente, box);
+		this.publicarTurno(turno);
+		
+		this.notificar("nuevo turno [ dni: " + turno.getCliente().getDni() + " ] " + "[ box: " + turno.getBox().toString() + " ]");
 			
 		return turno;
 	}
 	
 	public void publicarTurno(Turno turno) {
 		this.ssp.publicarTurno(turno);
+	}
+	
+	public void notificar(String mensaje) {
+		System.out.println(mensaje);
 	}
 	
 	

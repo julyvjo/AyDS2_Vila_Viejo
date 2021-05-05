@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import modelo.Box;
-import modelo.Cliente;
 import modelo.Turno;
 import vista.GUI_Box;
 
@@ -33,7 +32,15 @@ public class Controller implements ActionListener{
 		if(e.getActionCommand().equals("Proximo")) {
 			Box box = new Box(Integer.parseInt((String)e.getSource()));
 			Turno turno = (Turno) this.socketLlamado.getCliente(box);
-			this.ventana.mostrarCliente(turno.getCliente().getDni()); //paso el dni a la ventana para publicar
+			
+			
+			//arreglar
+			if(turno != null) {
+				this.ventana.mostrarCliente(turno.getCliente().getDni()); //paso el dni a la ventana para publicar
+			}else {
+				this.ventana.mostrarCliente("Cola vacia");
+			}
+			
 		}
 	}
 	

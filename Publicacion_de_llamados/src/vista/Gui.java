@@ -8,21 +8,10 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JTextPane;
 import java.awt.Font;
 import java.awt.FlowLayout;
-import javax.swing.JTextField;
-import java.awt.GridLayout;
-import javax.swing.SwingConstants;
-import javax.swing.border.LineBorder;
-import java.awt.Color;
-import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
 
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import javax.swing.border.BevelBorder;
 import javax.swing.border.EtchedBorder;
 
 public class Gui extends JFrame {

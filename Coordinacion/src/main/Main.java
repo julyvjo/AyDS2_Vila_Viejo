@@ -8,9 +8,8 @@ public class Main {
 
 		Controller controller = Controller.getInstance();
 		
-		System.out.println("server ejecutandose");
+		System.out.println("# Server running\n");
 		controller.listen(); //pone a escuchar a los sockets ssr y ssl
-		
 	}
 
 }

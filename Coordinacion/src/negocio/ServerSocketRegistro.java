@@ -19,8 +19,6 @@ public class ServerSocketRegistro implements Runnable{
 					
 				ObjectInputStream input = new ObjectInputStream(socket.getInputStream());
 				Cliente cliente = (Cliente) input.readObject();
-					
-				System.out.println("Cliente = " + cliente.getDni() + "\n");
 				
 				Controller.getInstance().agregarCliente(cliente); //llamo al controller para agregar al cliente	
 				
@@ -28,7 +26,7 @@ public class ServerSocketRegistro implements Runnable{
 					
 			}
 			} catch (Exception e) {
-			e.printStackTrace();
+				e.printStackTrace();
 			}
 			
 	}
