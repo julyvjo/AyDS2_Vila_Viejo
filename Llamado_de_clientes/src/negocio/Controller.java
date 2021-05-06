@@ -34,11 +34,10 @@ public class Controller implements ActionListener{
 			Turno turno = (Turno) this.socketLlamado.getCliente(box);
 			
 			
-			//arreglar
 			if(turno != null) {
 				this.ventana.mostrarCliente(turno.getCliente().getDni()); //paso el dni a la ventana para publicar
 			}else {
-				this.ventana.mostrarCliente("Cola vacia");
+				this.ventana.mostrarCliente("No hay clientes en espera");
 			}
 			
 		}
