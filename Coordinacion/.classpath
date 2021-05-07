@@ -6,6 +6,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/july/Documents/GitHub/AyDS2_Vila_Viejo/Libreria_Sistema_Turnos.jar"/>
+	<classpathentry kind="lib" path="/librerias/Libreria_Sistema_Turnos.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

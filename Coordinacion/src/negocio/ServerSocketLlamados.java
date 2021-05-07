@@ -4,11 +4,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.concurrent.TimeUnit;
 
 import excepciones.ColaVaciaException;
 import modelo.Box;
-import modelo.Cliente;
 import modelo.Turno;
 
 public class ServerSocketLlamados implements Runnable{

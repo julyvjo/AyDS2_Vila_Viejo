@@ -2,7 +2,6 @@ package negocio;
 
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-import modelo.Cliente;
 import modelo.Turno;
 
 public class ServerSocketPublicacion {

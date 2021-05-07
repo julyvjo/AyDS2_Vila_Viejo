@@ -4,7 +4,6 @@ import java.io.ObjectInputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import modelo.Cliente;
 import modelo.Turno;
 
 public class SocketPublicacion implements Runnable{

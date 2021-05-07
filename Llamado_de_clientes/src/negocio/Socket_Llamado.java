@@ -5,12 +5,11 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 import modelo.Box;
-import modelo.Cliente;
 import modelo.Turno;
 
 public class Socket_Llamado {
 
-	public Turno getCliente(Box box) {
+	public Turno getTurno(Box box) {
 		Turno turno = null;
 		try {
 			Socket socket = new Socket("localhost",5555);

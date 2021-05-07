@@ -31,7 +31,7 @@ public class Controller implements ActionListener{
 	public void actionPerformed(ActionEvent e) { 
 		if(e.getActionCommand().equals("Proximo")) {
 			Box box = new Box(Integer.parseInt((String)e.getSource()));
-			Turno turno = (Turno) this.socketLlamado.getCliente(box);
+			Turno turno = (Turno) this.socketLlamado.getTurno(box);
 			
 			
 			//arreglar

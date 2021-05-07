@@ -1,8 +1,6 @@
 package modelo;
 
 import java.util.LinkedList;
-import java.util.NoSuchElementException;
-import java.util.PriorityQueue;
 import java.util.Queue;
 
 import excepciones.ColaVaciaException;

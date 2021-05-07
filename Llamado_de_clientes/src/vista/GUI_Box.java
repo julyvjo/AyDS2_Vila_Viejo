@@ -55,7 +55,7 @@ public class GUI_Box extends JFrame implements ActionListener{
 	public GUI_Box(String nroBox) {
 		setTitle("Box");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, 680, 600);
+		setBounds(100, 100, 680, 600);
 		setLocationRelativeTo(null);
 		this.setResizable(false);
 		contentPane = new JPanel();

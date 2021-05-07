@@ -1,8 +1,5 @@
 package main;
 
-import modelo.Box;
-import modelo.Cliente;
-import modelo.Turno;
 import negocio.Controller;
 
 public class Main {
