@@ -1,10 +1,10 @@
 package negocio;
 
 import excepciones.ColaVaciaException;
-import modelo.Box;
-import modelo.Cliente;
+import dominio.Box;
+import dominio.Cliente;
 import modelo.Cola;
-import modelo.Turno;
+import dominio.Turno;
 
 public class Controller {
 

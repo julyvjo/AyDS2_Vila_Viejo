@@ -4,7 +4,7 @@ import java.io.ObjectInputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import modelo.Cliente;
+import dominio.Cliente;
 
 public class ServerSocketRegistro implements Runnable{
 

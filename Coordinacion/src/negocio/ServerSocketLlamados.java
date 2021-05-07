@@ -5,9 +5,10 @@ import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import dominio.Box;
+import dominio.Turno;
 import excepciones.ColaVaciaException;
-import modelo.Box;
-import modelo.Turno;
+
 
 public class ServerSocketLlamados implements Runnable{
 

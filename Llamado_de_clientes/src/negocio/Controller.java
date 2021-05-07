@@ -3,8 +3,8 @@ package negocio;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import modelo.Box;
-import modelo.Turno;
+import dominio.Box;
+import dominio.Turno;
 import vista.GUI_Box;
 
 public class Controller implements ActionListener{

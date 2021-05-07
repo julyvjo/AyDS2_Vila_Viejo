@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import factory.ClienteFactory;
-import modelo.Cliente;
+import dominio.Cliente;
 import vista.GUI_Registro;
 
 public class Controller implements ActionListener{

@@ -1,6 +1,6 @@
 package factory;
 
-import modelo.Cliente;
+import dominio.Cliente;
 
 public class ClienteFactory {
 

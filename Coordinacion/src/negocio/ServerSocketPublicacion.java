@@ -2,7 +2,7 @@ package negocio;
 
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-import modelo.Turno;
+import dominio.Turno;
 
 public class ServerSocketPublicacion {
 	//desde esta clase se envian los turnos a la componente de publicación (el socket NO escucha, solo comunica)

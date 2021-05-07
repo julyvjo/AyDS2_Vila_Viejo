@@ -111,7 +111,7 @@ public class Gui extends JFrame {
 		this.contenedor_izq.add(this.panel_label_box, BorderLayout.NORTH);
 		
 		this.label_box = new JLabel("Box");
-		this.label_box.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		this.label_box.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		this.panel_label_box.add(this.label_box);
 		
 		this.panel_list_box = new JPanel();
@@ -133,7 +133,7 @@ public class Gui extends JFrame {
 		this.contenedor_der.add(this.panel_label_dni, BorderLayout.NORTH);
 		
 		this.label_dni = new JLabel("DNI");
-		this.label_dni.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		this.label_dni.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		this.panel_label_dni.add(this.label_dni);
 		
 		this.panel_list_dni = new JPanel();

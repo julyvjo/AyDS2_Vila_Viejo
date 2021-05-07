@@ -4,8 +4,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-import modelo.Box;
-import modelo.Turno;
+import dominio.Box;
+import dominio.Turno;
 
 public class Socket_Llamado {
 

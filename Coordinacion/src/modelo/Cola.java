@@ -3,6 +3,7 @@ package modelo;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import dominio.Cliente;
 import excepciones.ColaVaciaException;
 
 public class Cola {

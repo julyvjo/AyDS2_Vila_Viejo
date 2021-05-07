@@ -2,7 +2,7 @@ package negocio;
 
 import java.util.ArrayList;
 
-import modelo.Turno;
+import dominio.Turno;
 import vista.Gui;
 
 public class Controller {
