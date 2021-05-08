@@ -15,7 +15,7 @@ public class Controller implements ActionListener{
 	
 	//constructor privado por patrón Singleton
 	private Controller() {
-		this.ventana = new GUI_Box("1");
+		this.ventana = new GUI_Box();
 		this.ventana.setActionListener(this);
 	}
 	

@@ -7,6 +7,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.GridLayout;
 import javax.swing.BoxLayout;
 import javax.swing.SwingConstants;
@@ -47,15 +49,16 @@ public class GUI_Box extends JFrame implements ActionListener{
 	private JPanel panelNro;
 	private JLabel lblBoxNro;
 	private JLabel lblNroDNI;
+	private JButton btnEdit;
 
 
 	/**
 	 * Create the frame.
 	 */
-	public GUI_Box(String nroBox) {
+	public GUI_Box() {
 		setTitle("Box");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 680, 600);
+		setBounds(0, 0, 680, 600);
 		setLocationRelativeTo(null);
 		this.setResizable(false);
 		contentPane = new JPanel();
@@ -160,12 +163,20 @@ public class GUI_Box extends JFrame implements ActionListener{
 		panelBox.add(panelNro, BorderLayout.SOUTH);
 		panelNro.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		this.lblBox = new JLabel("Nro Box:");
+		btnEdit = new JButton("Editar");
+		btnEdit.setBackground(new Color(204, 204, 204));
+		btnEdit.setForeground(Color.DARK_GRAY);
+		btnEdit.setFont(new Font("Century Gothic", Font.BOLD, 12));
+		btnEdit.setActionCommand("Editar");
+		btnEdit.addActionListener(this);
+		panelNro.add(btnEdit);
+		
+		lblBox = new JLabel("Nro Box:");
 		panelNro.add(lblBox);
 		lblBox.setForeground(Color.DARK_GRAY);
 		lblBox.setFont(new Font("Century Gothic", Font.PLAIN, 18));
 		
-		lblBoxNro = new JLabel(nroBox);
+		lblBoxNro = new JLabel();
 		lblBoxNro.setForeground(Color.DARK_GRAY);
 		lblBoxNro.setFont(new Font("Century Gothic", Font.PLAIN, 18));
 		panelNro.add(lblBoxNro);
@@ -174,6 +185,7 @@ public class GUI_Box extends JFrame implements ActionListener{
 		JPanel panelEmpty2 = new JPanel();
 		
 		this.setVisible(true);
+		this.lblBoxNro.setText(JOptionPane.showInputDialog(this, "Nro box:", "", 3));
 	}
 
 
@@ -183,8 +195,15 @@ public class GUI_Box extends JFrame implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		ActionEvent event = new ActionEvent(this.lblBoxNro.getText(), 0, "Proximo");
-		this.actionListener.actionPerformed(event);
+		if(e.getActionCommand().equals("Proximo")) {
+			ActionEvent event = new ActionEvent(this.lblBoxNro.getText(), 0, "Proximo");
+			this.actionListener.actionPerformed(event);
+		}
+		else {
+			String box = JOptionPane.showInputDialog(this, "Nro box:", "", 3);
+			if(box!=null && !box.equals(""))
+				this.lblBoxNro.setText(box);
+		}
 	}
 
 	public void mostrarCliente(String dni) {

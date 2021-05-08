@@ -10,12 +10,6 @@ public class Socket_Registro {
 	public void agregarCliente(Cliente cliente) {
 		try {
 			Socket socket = new Socket("localhost",4444);
-			//PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-			//BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			//out.println("mensaje");
-			
-			//out.print(cliente);
-			
 			
 			ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream());
 			
