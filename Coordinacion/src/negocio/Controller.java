@@ -9,10 +9,12 @@ import dominio.Turno;
 public class Controller {
 
 	private static Controller instance = null;
+	private int port = 100;
 	private Cola cola = new Cola();
 	private ServerSocketRegistro ssr = new ServerSocketRegistro();
 	private ServerSocketLlamados ssl = new ServerSocketLlamados();
 	private ServerSocketPublicacion ssp = new ServerSocketPublicacion();
+	private ServerSocketServer sss = new ServerSocketServer();
 	
 	//patron Singleton
 	private Controller() {}
@@ -22,6 +24,10 @@ public class Controller {
 			instance = new Controller();
 		}
 		return instance;
+	}
+	
+	public int getPort() {
+		return this.port;
 	}
 	
 	public void listen() {
