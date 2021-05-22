@@ -52,6 +52,10 @@ public class ServerSocketServerSalida{
 			
 			cola = (Cola) input.readObject();
 			
+			out.close();
+			input.close();
+			socket.close();
+			
 		} catch (UnknownHostException e) {
 			//si no se puede conectar no hace nada
 		} catch (IOException e) {
@@ -71,6 +75,8 @@ public class ServerSocketServerSalida{
 			PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 			out.write("pull"); //le indica al otro server la accion a realizar (pide sincronizacion)
 			
+			out.close();
+			socket.close();
 			
 		} catch (UnknownHostException e) {
 			//si no se puede conectar no hace nada
@@ -86,11 +92,17 @@ public class ServerSocketServerSalida{
 		try {
 			Socket socket = new Socket("localhost",port);
 			
-			BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 			out.write("ping");
 			
+			BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			msg = in.readLine();
+			
+			System.out.println("pedi un ping, me devolvieron: " + msg); //quitar
+			
+			in.close();
+			out.close();
+			socket.close();
 			
 			return msg;
 			

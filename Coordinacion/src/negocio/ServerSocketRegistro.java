@@ -24,7 +24,7 @@ public class ServerSocketRegistro implements Runnable{
 				Cliente cliente = (Cliente) input.readObject();
 				
 				Controller.getInstance().agregarCliente(cliente); //llamo al controller para agregar al cliente
-				Controller.getInstance().informarAgregado(cliente); //pide al controller que avise al otro server del agregado
+				//Controller.getInstance().informarAgregado(cliente); //pide al controller que avise al otro server del agregado
 				
 				socket.close();
 					

@@ -50,6 +50,7 @@ public class ServerSocketServerEntrada implements Runnable{
 					
 				}else if(msg.equals("ping")) {
 					
+					System.out.println("recibi un ping");
 					PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 					out.write("ping"); //retorna ping al llamado de ping
 					out.close();

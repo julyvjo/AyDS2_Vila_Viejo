@@ -76,9 +76,11 @@ public class Controller {
 		
 		Thread hilossr = new Thread(this.ssr);
 		Thread hilossl = new Thread(this.ssl);
+		Thread hilossse = new Thread(this.ssse);
 		
 		hilossr.start();
 		hilossl.start();
+		hilossse.start();
 		
 	}
 	
@@ -145,8 +147,13 @@ public class Controller {
 	}
 	
 	public void pedirSincronizacionCola() {
+		Cola cola;
 		
-		this.cola = this.ssss.sync();
+		cola = this.ssss.sync();
+		
+		if(cola != null) {
+			this.cola = cola;
+		}
 	}
 	
 	
