@@ -14,7 +14,8 @@ public class Controller {
 	private ServerSocketRegistro ssr = new ServerSocketRegistro();
 	private ServerSocketLlamados ssl = new ServerSocketLlamados();
 	private ServerSocketPublicacion ssp = new ServerSocketPublicacion();
-	private ServerSocketServer sss = new ServerSocketServer();
+	private ServerSocketServerEntrada ssse = new ServerSocketServerEntrada(); //recibe mensajes del otro server
+	private ServerSocketServerSalida ssss = new ServerSocketServerSalida(); //envia mensajes al otro server
 	
 	//patron Singleton
 	private Controller() {}

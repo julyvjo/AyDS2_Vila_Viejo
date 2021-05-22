@@ -10,7 +10,7 @@ import java.net.Socket;
 
 import dominio.Cliente;
 
-public class ServerSocketServer implements Runnable{
+public class ServerSocketServerEntrada implements Runnable{
 	private int puerto_envio = 7000;
 	private int puerto_escucha = 7000;
 	
