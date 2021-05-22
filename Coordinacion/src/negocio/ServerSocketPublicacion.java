@@ -4,12 +4,14 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import dominio.Turno;
 
-public class ServerSocketPublicacion {
-	//desde esta clase se envian los turnos a la componente de publicación (el socket NO escucha, solo comunica)
+public class ServerSocketPublicacion { //desde esta clase se envian los turnos a la componente de publicación (el socket NO escucha, solo comunica)
 	
 	public void publicarTurno(Turno turno) {
+		
+		int puerto_publicacion = Controller.getInstance().getPort_publicacion();
+		
 		try {
-			Socket socket = new Socket("localhost",6666);
+			Socket socket = new Socket("localhost",puerto_publicacion);
 			
 			ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream());
 			output.writeObject(turno);

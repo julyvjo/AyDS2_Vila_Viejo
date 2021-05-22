@@ -11,14 +11,15 @@ import excepciones.ColaVaciaException;
 
 
 public class ServerSocketLlamados implements Runnable{
+	
 
 	@Override
-	public void run() {
+	public void run() { //este metodo deberia devolverle a la componente de llamados el cliente que le toca atender o indicarle que no hay ninguno
 		
-		//este metodo deberia devolverle a la componente de llamados el cliente que le toca atender o indicarle que no hay ninguno
+		int port_llamado = Controller.getInstance().getPort_llamado();
 			
 		try {
-			ServerSocket serverSocket = new ServerSocket(5555);
+			ServerSocket serverSocket = new ServerSocket(port_llamado);
 			while (true) {
 					
 				Socket socket = serverSocket.accept();
@@ -31,6 +32,7 @@ public class ServerSocketLlamados implements Runnable{
 				try {
 					
 					Turno turno = Controller.getInstance().getTurno(box); //podria tirar excepcion cola vacia o interrupted
+					Controller.getInstance().informarExtraccion(); //informa al otro server que se extrajo un cliente
 					
 					output.writeObject(turno); //devuelve el turno a la componente de llamados
 					
