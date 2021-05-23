@@ -1,12 +1,13 @@
 package modelo;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.Queue;
 
 import dominio.Cliente;
 import excepciones.ColaVaciaException;
 
-public class Cola {
+public class Cola implements Serializable{
 
 	private Queue<Cliente> cola = new LinkedList<Cliente>();
 	

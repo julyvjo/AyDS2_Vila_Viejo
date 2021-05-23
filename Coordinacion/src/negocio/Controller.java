@@ -115,23 +115,21 @@ public class Controller {
 	
 	public void portResolve() {
 		
-		int offset;
+		int offset = 0;
 		
 		String msg = this.ssss.ping(7000);
 		
-		if(msg == "ping") { //si recibe ping, el otro server está corriendo en el puerto 7000
-			offset = 100;
-			this.server_id = 2;
-		}else {
+		if(msg == null) { //si recibe null, el otro server no está corriendo
 			offset = 0;
 			this.server_id = 1;
+		}else if(msg.equals("ping")){ //si recibe ping el otro server está corriendo
+			offset = 100;
+			this.server_id = 2;
 		}
-		
-		System.out.println("MENSAJE = "+ msg); //quitar
 		
 		this.port_registro = 4000 + offset;
 		this.port_llamado = 5000 + offset;
-		this.port_publicacion = 6000 + offset;
+		this.port_publicacion = 6000;
 		this.port_server_entrada = 7000 + offset;
 		this.port_server_salida = 7100 - offset;
 	}

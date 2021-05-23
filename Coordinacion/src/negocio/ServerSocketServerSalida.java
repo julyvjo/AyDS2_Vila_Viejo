@@ -24,7 +24,7 @@ public class ServerSocketServerSalida{
 			Socket socket = new Socket("localhost",puerto_envio);
 			
 			PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-			out.write("save"); //le indica al otro server la accion a realizar (guardar un cliente)
+			out.println("save"); //le indica al otro server la accion a realizar (guardar un cliente)
 			
 			
 			ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream());
@@ -46,13 +46,17 @@ public class ServerSocketServerSalida{
 		try {
 			Socket socket = new Socket("localhost",puerto_envio);
 			
-			ObjectInputStream input = new ObjectInputStream(socket.getInputStream());
-			PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-			out.write("sync"); //le indica al otro server la accion a realizar (pide sincronizacion)
+			//PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+			//out.println("sync"); //le indica al otro server la accion a realizar (pide sincronizacion)
+			//out.close();
+			ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream());
+			output.writeObject("sync");
 			
+			
+			ObjectInputStream input = new ObjectInputStream(socket.getInputStream());
 			cola = (Cola) input.readObject();
 			
-			out.close();
+			output.close();
 			input.close();
 			socket.close();
 			
@@ -73,7 +77,7 @@ public class ServerSocketServerSalida{
 			Socket socket = new Socket("localhost",puerto_envio);
 			
 			PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-			out.write("pull"); //le indica al otro server la accion a realizar (pide sincronizacion)
+			out.println("pull"); //le indica al otro server la accion a realizar (pide sincronizacion)
 			
 			out.close();
 			socket.close();
@@ -92,16 +96,23 @@ public class ServerSocketServerSalida{
 		try {
 			Socket socket = new Socket("localhost",port);
 			
-			PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-			out.write("ping");
+			//BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			//PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+			//out.println("ping");
 			
-			BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			msg = in.readLine();
+			ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream());
+			output.writeObject("ping");
 			
-			System.out.println("pedi un ping, me devolvieron: " + msg); //quitar
 			
-			in.close();
-			out.close();
+			ObjectInputStream input = new ObjectInputStream(socket.getInputStream());
+			msg = (String) input.readObject();
+
+			//msg = in.readLine();
+			
+			//in.close();
+			//out.close();
+			output.close();
+			input.close();
 			socket.close();
 			
 			return msg;
@@ -109,6 +120,8 @@ public class ServerSocketServerSalida{
 		} catch (UnknownHostException e) {
 			return null;
 		} catch (IOException e) {
+			return null;
+		} catch (ClassNotFoundException e) {
 			return null;
 		}
 		
