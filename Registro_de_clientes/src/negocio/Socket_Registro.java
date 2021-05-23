@@ -15,26 +15,25 @@ public class Socket_Registro {
 	
 	public void agregarCliente(Cliente cliente) {
 		try {
+			System.out.println("pruebo conectarme al puerto " + port);
 			conecta(port, cliente);
 			
-		} catch(UnknownHostException e) { 		//falla al conectar con el port
+		} catch(Exception e) { 		//falla al conectar con el port
+			System.out.println("host exception");
 			if(port == port1) 					//si no puede conectar con el primer puerto se cambia el port principal por el de reserva (sea cual sea de los dos)
 				port = port2;
 			else
 				port = port1;
 				
-			try {		
+			try {
+				System.out.println("pruebo conectarme al puerto " + port);
 				conecta(port, cliente); 		//reintenta conectar usando el port de reserva
 				
-			} catch(UnknownHostException e1) {
-				e1.printStackTrace();
+			} catch(Exception e1) {
 				
-			} catch(IOException e1) {
-				e1.printStackTrace();
+				e1.printStackTrace();	
 			}
 			
-		} catch(IOException e) {
-			e.printStackTrace();
 		}
 	}
 	

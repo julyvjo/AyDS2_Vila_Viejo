@@ -26,26 +26,19 @@ public class ServerSocketServerEntrada implements Runnable{
 					
 				Socket socket = serverSocket.accept();
 				
-				//BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 				ObjectInputStream input = new ObjectInputStream(socket.getInputStream());
 				String msg = (String) input.readObject();
 				
-				//String msg = in.readLine();
-				System.out.println("MSG = " + msg);
+				System.out.println("MSG = " + msg); //quitar
 				
 				if(msg.equals("save")) { //guarda el cliente que le manda el otro server
 					
-					//ObjectInputStream 
-					input = new ObjectInputStream(socket.getInputStream());
 					Cliente cliente = (Cliente) input.readObject();
-					
 					Controller.getInstance().agregarCliente(cliente);
-					input.close();
 					
 				}else if(msg.equals("sync")) { //manda cola al otro server para sincronizarlo
 					
 					ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream());
-					//in.close();
 					Cola cola = Controller.getInstance().getCola();
 					output.writeObject(cola);
 					output.close();
@@ -56,15 +49,12 @@ public class ServerSocketServerEntrada implements Runnable{
 					
 				}else if(msg.equals("ping")) {
 					
-					//PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-					//out.println("ping"); //retorna ping al llamado de ping
-					//out.close();
 					ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream());
 					output.writeObject("ping");
 					output.close();
 				}
-				
-				//in.close();
+
+				input.close();
 				socket.close();
 					
 			}

@@ -23,11 +23,9 @@ public class ServerSocketServerSalida{
 		try {
 			Socket socket = new Socket("localhost",puerto_envio);
 			
-			PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-			out.println("save"); //le indica al otro server la accion a realizar (guardar un cliente)
-			
-			
 			ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream());
+			
+			output.writeObject("save");
 			output.writeObject(cliente);
 			
 			output.close();
@@ -39,19 +37,15 @@ public class ServerSocketServerSalida{
 		
 	}
 	
-	public Cola sync() { //pide sincronizacion al otro server (le devuelve la cola actual)
+	public Cola sync() { //pide sincronizacion al otro server (y el otro le devuelve la cola actual)
 		Cola cola = null;
 		int puerto_envio = Controller.getInstance().getPort_server_salida();
 		
 		try {
 			Socket socket = new Socket("localhost",puerto_envio);
 			
-			//PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-			//out.println("sync"); //le indica al otro server la accion a realizar (pide sincronizacion)
-			//out.close();
 			ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream());
 			output.writeObject("sync");
-			
 			
 			ObjectInputStream input = new ObjectInputStream(socket.getInputStream());
 			cola = (Cola) input.readObject();
@@ -60,10 +54,8 @@ public class ServerSocketServerSalida{
 			input.close();
 			socket.close();
 			
-		} catch (UnknownHostException e) {
+		} catch (Exception e) {
 			//si no se puede conectar no hace nada
-		} catch (IOException e) {
-		} catch (ClassNotFoundException e) {
 		}
 		
 		return cola; 
@@ -76,16 +68,14 @@ public class ServerSocketServerSalida{
 		try {
 			Socket socket = new Socket("localhost",puerto_envio);
 			
-			PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-			out.println("pull"); //le indica al otro server la accion a realizar (pide sincronizacion)
+			ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream());
+			output.writeObject("sync");
 			
-			out.close();
+			output.close();
 			socket.close();
 			
-		} catch (UnknownHostException e) {
+		} catch (Exception e) {
 			//si no se puede conectar no hace nada
-		} catch (IOException e) {
-			e.printStackTrace();
 		}
 		
 	}
@@ -96,35 +86,21 @@ public class ServerSocketServerSalida{
 		try {
 			Socket socket = new Socket("localhost",port);
 			
-			//BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			//PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-			//out.println("ping");
-			
 			ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream());
 			output.writeObject("ping");
 			
-			
 			ObjectInputStream input = new ObjectInputStream(socket.getInputStream());
 			msg = (String) input.readObject();
-
-			//msg = in.readLine();
 			
-			//in.close();
-			//out.close();
 			output.close();
 			input.close();
 			socket.close();
 			
 			return msg;
 			
-		} catch (UnknownHostException e) {
-			return null;
-		} catch (IOException e) {
-			return null;
-		} catch (ClassNotFoundException e) {
+		} catch (Exception e) {
 			return null;
 		}
-		
 		
 	}
 
