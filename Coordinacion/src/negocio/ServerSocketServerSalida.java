@@ -69,7 +69,7 @@ public class ServerSocketServerSalida{
 			Socket socket = new Socket("localhost",puerto_envio);
 			
 			ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream());
-			output.writeObject("sync");
+			output.writeObject("pull");
 			
 			output.close();
 			socket.close();
@@ -103,6 +103,6 @@ public class ServerSocketServerSalida{
 		}
 		
 	}
-
 	
+
 }

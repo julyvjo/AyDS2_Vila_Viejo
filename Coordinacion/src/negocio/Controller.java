@@ -15,6 +15,7 @@ public class Controller {
 	private int port_publicacion;
 	private int port_server_salida;
 	private int port_server_entrada;
+	private int port_monitor;
 	private int server_id;
 	
 	
@@ -24,6 +25,7 @@ public class Controller {
 	private ServerSocketPublicacion ssp = new ServerSocketPublicacion();
 	private ServerSocketServerEntrada ssse = new ServerSocketServerEntrada(); //recibe mensajes del otro server
 	private ServerSocketServerSalida ssss = new ServerSocketServerSalida(); //envia mensajes al otro server
+	private ServerSocketMonitor ssm = new ServerSocketMonitor();
 	
 	//patron Singleton
 	private Controller() {}
@@ -59,6 +61,10 @@ public class Controller {
 		return port_server_entrada;
 	}
 	
+	public int getPort_monitor() {
+		return port_monitor;
+	}
+	
 	public int getServer_id() {
 		return server_id;
 	}
@@ -77,10 +83,12 @@ public class Controller {
 		Thread hilossr = new Thread(this.ssr);
 		Thread hilossl = new Thread(this.ssl);
 		Thread hilossse = new Thread(this.ssse);
+		Thread hilossm = new Thread(this.ssm);
 		
 		hilossr.start();
 		hilossl.start();
 		hilossse.start();
+		hilossm.start();
 		
 	}
 	
@@ -132,6 +140,7 @@ public class Controller {
 		this.port_publicacion = 6000;
 		this.port_server_entrada = 7000 + offset;
 		this.port_server_salida = 7100 - offset;
+		this.port_monitor = 8000;
 	}
 	
 	public void informarAgregado(Cliente cliente) {
@@ -153,6 +162,7 @@ public class Controller {
 			this.cola = cola;
 		}
 	}
+	
 	
 	
 }

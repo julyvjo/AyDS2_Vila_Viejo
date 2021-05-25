@@ -17,7 +17,8 @@ public class Main {
 				"Puerto de llamado = " + controller.getPort_llamado() + "\n" +
 				"Puerto de publicacion = " + controller.getPort_publicacion() + "\n" +
 				"Puerto de entrada (server) = " + controller.getPort_server_entrada() + "\n" +
-				"Puerto de salida (server) = " + controller.getPort_server_salida() + "\n"
+				"Puerto de salida (server) = " + controller.getPort_server_salida() + "\n" +
+				"Puerto de monitor = " + controller.getPort_monitor() + "\n"
 				
 				);
 		controller.listen(); //pone a escuchar a los sockets ssr y ssl
