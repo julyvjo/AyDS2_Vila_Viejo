@@ -32,9 +32,9 @@ public class ServerSocketLlamados implements Runnable{
 				try {
 					
 					Turno turno = Controller.getInstance().getTurno(box); //podria tirar excepcion cola vacia o interrupted
+					output.writeObject(turno); //devuelve el turno a la componente de llamados
 					Controller.getInstance().informarExtraccion(); //informa al otro server que se extrajo un cliente
 					
-					output.writeObject(turno); //devuelve el turno a la componente de llamados
 					
 				} catch (ColaVaciaException e) { //en caso de que la cola este vacia
 					Controller.getInstance().notificar("nuevo turno = [ Null ] " + "[ box: " + box.getNumero_box() + " ]");

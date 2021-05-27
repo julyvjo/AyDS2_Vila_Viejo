@@ -8,9 +8,9 @@ public class ServerSocketPublicacion { //desde esta clase se envian los turnos a
 	
 	public void publicarTurno(Turno turno) {
 		
-		int puerto_publicacion = Controller.getInstance().getPort_publicacion();
-		
 		try {
+			int puerto_publicacion = Controller.getInstance().getPort_publicacion();
+			
 			Socket socket = new Socket("localhost",puerto_publicacion);
 			
 			ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream());

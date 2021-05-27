@@ -21,7 +21,7 @@ public class Socket_Llamado {
 			
 			turno = conecta(port, box);
 			
-		} catch (UnknownHostException e) { //falla al conectar con el port
+		} catch (Exception e) { //falla al conectar con el port
 				
 				if(port == port1) { //si no puede conectar con el primer puerto se cambia el port principal por el de reserva (sea cual sea de los dos)
 					port = port2;
@@ -33,17 +33,9 @@ public class Socket_Llamado {
 					
 					turno = conecta(port, box); //reintenta conectar usando el port de reserva
 					
-				} catch (UnknownHostException e1) {
-					e1.printStackTrace();
-				} catch (ClassNotFoundException e1) {
-					e1.printStackTrace();
-				} catch (IOException e1) {
+				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
-		}catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
 		}
 		
 		return turno;
