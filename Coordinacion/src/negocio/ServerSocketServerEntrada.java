@@ -13,6 +13,11 @@ import modelo.Cola;
 
 public class ServerSocketServerEntrada implements Runnable{
 
+	/**
+	 *Escucha en el puerto correspondiente (7xxx)
+	 *Recibe mensajes exclusivamente del otro servidor y dependiendo el string que obtenga
+	 *invoca una u otra accion (guardar cliente, enviar cola de clientes, extraer cliente o devolver ping)
+	 */
 	@Override
 	public void run() {
 		
@@ -29,7 +34,7 @@ public class ServerSocketServerEntrada implements Runnable{
 				ObjectInputStream input = new ObjectInputStream(socket.getInputStream());
 				String msg = (String) input.readObject();
 				
-				System.out.println("MSG = " + msg); //quitar
+				//System.out.println("MSG = " + msg);
 				
 				if(msg.equals("save")) { //guarda el cliente que le manda el otro server
 					

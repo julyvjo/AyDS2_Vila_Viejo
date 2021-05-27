@@ -16,7 +16,11 @@ public class ServerSocketServerSalida{
 	
 
 	
-	public void saveCliente(Cliente cliente) { //envia cliente al otro server para que lo almacene
+	/**
+	 * envia cliente al otro server para que lo almacene
+	 * @param cliente
+	 */
+	public void saveCliente(Cliente cliente) {
 		
 		int puerto_envio = Controller.getInstance().getPort_server_salida();
 		
@@ -37,7 +41,11 @@ public class ServerSocketServerSalida{
 		
 	}
 	
-	public Cola sync() { //pide sincronizacion al otro server (y el otro le devuelve la cola actual)
+	/**
+	 * pide sincronizacion al otro server (y el otro le devuelve la cola actual)
+	 * @return
+	 */
+	public Cola sync() {
 		Cola cola = null;
 		int puerto_envio = Controller.getInstance().getPort_server_salida();
 		
@@ -61,7 +69,10 @@ public class ServerSocketServerSalida{
 		return cola; 
 	}
 	
-	public void pullCliente() { //pide al otro servidor que quite un cliente de la cola
+	/**
+	 * pide al otro servidor que quite un cliente de la cola
+	 */
+	public void pullCliente() {
 		
 		int puerto_envio = Controller.getInstance().getPort_server_salida();
 		
@@ -80,6 +91,12 @@ public class ServerSocketServerSalida{
 		
 	}
 	
+	/**
+	 * Envia "ping" al puerto pasado como parametro y espera un "ping" de respuesta y lo retorna, en caso
+	 * de no recibirlo retorna null
+	 * @param port
+	 * @return
+	 */
 	public String ping(int port) {
 		String msg = null;
 		

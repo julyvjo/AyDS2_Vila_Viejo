@@ -6,6 +6,10 @@ import dominio.Turno;
 
 public class ServerSocketPublicacion { //desde esta clase se envian los turnos a la componente de publicación (el socket NO escucha, solo comunica)
 	
+	/**
+	 * Envia turno a la componente de publicacion para que sea publicado
+	 * @param turno
+	 */
 	public void publicarTurno(Turno turno) {
 		
 		try {

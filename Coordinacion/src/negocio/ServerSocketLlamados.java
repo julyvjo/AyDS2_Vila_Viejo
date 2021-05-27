@@ -13,6 +13,12 @@ import excepciones.ColaVaciaException;
 public class ServerSocketLlamados implements Runnable{
 	
 
+	/**
+	 *Escucha en el puerto correspondiente (6xxx)
+	 *Recibe una peticion de turno con un box por parametro y se lo pasa al controller para crear el turno
+	 *una vez obtenido el turno lo envia al box que realizo la peticion, avisa al server pasivo que quite a
+	 *dicho cliente de la cola y por ultimo envia el turno a la componente de publicacion para publicarlo
+	 */
 	@Override
 	public void run() { //este metodo deberia devolverle a la componente de llamados el cliente que le toca atender o indicarle que no hay ninguno
 		

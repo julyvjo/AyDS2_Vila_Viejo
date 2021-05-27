@@ -9,6 +9,12 @@ import dominio.Cliente;
 public class ServerSocketRegistro implements Runnable{
 	
 
+	/**
+	 *Escucha en el puerto correspondiente (4xxx)
+	 *Recibe los clientes enviados por la componente de registro e invoca metodos
+	 *para guardarlos en la cola de clientes, tambien avisa al otro server para
+	 *que "imite" al principal y registre tambien al cliente
+	 */
 	@Override
 	public void run() {
 		
