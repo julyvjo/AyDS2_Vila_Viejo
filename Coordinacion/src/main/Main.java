@@ -7,8 +7,8 @@ public class Main {
 	public static void main(String[] args) {
 
 		Controller controller = Controller.getInstance();
-		controller.portResolve();
-		controller.pedirSincronizacionCola();
+		controller.portResolve(); //invoca un metodo que setea los puertos a usar por el servidor
+		controller.pedirSincronizacionCola(); //pide sincronizacion al servidor activo, si no existe queda la cola de clietnes vacia
 		
 		System.out.println("# Server running - ID = " + controller.getServer_id() + "\n");
 		System.out.println(
@@ -21,7 +21,7 @@ public class Main {
 				"Puerto de monitor = " + controller.getPort_monitor() + "\n"
 				
 				);
-		controller.listen(); //pone a escuchar a los sockets ssr y ssl
+		controller.listen(); //activa los hilos del server para comunicaciones
 	}
 
 }
