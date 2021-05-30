@@ -9,7 +9,7 @@ public class ServerSocketMonitor implements Runnable{
 	public void run() {
 		while(true) {
 			try {
-				Thread.sleep(3000);						// manda un pulso cada 3 segundos
+				Thread.sleep(8000);						// manda un pulso cada 8 segundos
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -29,7 +29,6 @@ public class ServerSocketMonitor implements Runnable{
 			socket.close();
 			
 		} catch (Exception e) {
-			e.printStackTrace();
 		}
 		
 	}

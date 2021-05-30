@@ -211,4 +211,16 @@ public class GUI_Box extends JFrame implements ActionListener{
 	}
 
 
+	public void mostrarMensajeNoHayClientes() {
+		
+		JOptionPane.showMessageDialog(this, "No hay clientes en espera");
+	}
+
+
+	public void mostrarMensajeErrorDeConexion() {
+		
+		JOptionPane.showMessageDialog(this, "Error de conexión");
+	}
+
+
 }

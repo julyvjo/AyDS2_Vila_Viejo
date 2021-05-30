@@ -34,7 +34,7 @@ public class Socket_Llamado {
 					turno = conecta(port, box); //reintenta conectar usando el port de reserva
 					
 				} catch (Exception e1) {
-					e1.printStackTrace();
+					Controller.getInstance().informarErrorDeConexion();
 				}
 		}
 		

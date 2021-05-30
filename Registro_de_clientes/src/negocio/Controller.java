@@ -33,6 +33,7 @@ public class Controller implements ActionListener{
 		String dni = (String) e.getSource(); //el evento e trae el dni por parametro
 		Cliente cliente = ClienteFactory.getCliente(dni);
 		this.socketRegistro.agregarCliente(cliente);
+		this.ventana.mensajeRegistroExitoso();
 	}
 	
 }

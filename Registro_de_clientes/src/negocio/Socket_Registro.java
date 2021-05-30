@@ -15,7 +15,6 @@ public class Socket_Registro {
 	
 	public void agregarCliente(Cliente cliente) {
 		try {
-			System.out.println("pruebo conectarme al puerto " + port);
 			conecta(port, cliente);
 			
 		} catch(Exception e) { 		//falla al conectar con el port
@@ -26,7 +25,6 @@ public class Socket_Registro {
 				port = port1;
 				
 			try {
-				System.out.println("pruebo conectarme al puerto " + port);
 				conecta(port, cliente); 		//reintenta conectar usando el port de reserva
 				
 			} catch(Exception e1) {

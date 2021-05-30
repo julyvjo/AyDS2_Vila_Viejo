@@ -36,11 +36,16 @@ public class Controller implements ActionListener{
 			
 			if(turno != null) {
 				this.ventana.mostrarCliente(turno.getCliente().getDni()); //paso el dni a la ventana para publicar
-			}else {
-				this.ventana.mostrarCliente("No hay clientes en espera");
+			}else if(turno == null){
+				this.ventana.mostrarCliente("");
+				this.ventana.mostrarMensajeNoHayClientes();
 			}
 			
 		}
+	}
+	
+	public void informarErrorDeConexion() {
+		this.ventana.mostrarMensajeErrorDeConexion();
 	}
 	
 	
