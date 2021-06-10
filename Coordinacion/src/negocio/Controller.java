@@ -4,6 +4,7 @@ import excepciones.ColaVaciaException;
 import dominio.Box;
 import dominio.Cliente;
 import modelo.Cola;
+import persistencia.AdapterLog_txt;
 import dominio.Turno;
 
 public class Controller {
@@ -26,6 +27,7 @@ public class Controller {
 	private ServerSocketServerEntrada ssse = new ServerSocketServerEntrada(); //recibe mensajes del otro server
 	private ServerSocketServerSalida ssss = new ServerSocketServerSalida(); //envia mensajes al otro server
 	private ServerSocketMonitor ssm = new ServerSocketMonitor();
+	private AdapterLog_txt log = new AdapterLog_txt(); //graba los logs en txt [fecha, hora, eventos]
 	
 	//patron Singleton
 	private Controller() {}
@@ -224,6 +226,11 @@ public class Controller {
 		if(cola != null) {
 			this.cola = cola;
 		}
+	}
+	
+	public void writeLog(String accion) {
+		
+		this.log.writeLog(accion);
 	}
 	
 	

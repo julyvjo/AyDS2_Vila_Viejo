@@ -27,9 +27,6 @@ public class AdapterLog_txt implements IAdapterLog{
 		
 		
 		
-		
-		
-		
 	}
 
 }
