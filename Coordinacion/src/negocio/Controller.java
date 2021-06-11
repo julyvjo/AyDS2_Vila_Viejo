@@ -86,20 +86,26 @@ public class Controller {
 	
 	/**
 	 * Pone a escuchar a los hilos del controller para las comunicaciones
-	 * server socket registro, server socket llamados, server socket server entrada y server socket monitor.
+	 * server socket registro, server socket llamados, server socket server entrada
 	 */
 	public void listen() {
 		
 		Thread hilossr = new Thread(this.ssr);
 		Thread hilossl = new Thread(this.ssl);
 		Thread hilossse = new Thread(this.ssse);
-		Thread hilossm = new Thread(this.ssm);
 		
 		hilossr.start();
 		hilossl.start();
 		hilossse.start();
-		hilossm.start();
 		
+	}
+	
+	/**
+	 * Envia un pulso periodicamente al monitor para demostrar que esta online
+	 */
+	public void heartbeat() {
+		Thread hilossm = new Thread(this.ssm);
+		hilossm.start();
 	}
 	
 	/**

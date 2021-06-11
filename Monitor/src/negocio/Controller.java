@@ -5,7 +5,6 @@ import java.io.IOException;
 public class Controller {
 	private static Controller instance = null;
 	private SocketMonitor sm;
-	private Thread hilosm;
 	private String estadoS1;							// "offline" -- "running";
 	private String estadoS2;							// "offline" -- "running";
 	private int pulso_ant;
@@ -13,8 +12,7 @@ public class Controller {
 	//patron Singleton
 	private Controller() {
 		this.sm = new SocketMonitor();
-		this.hilosm = new Thread(this.sm);
-		this.hilosm.start();
+		this.reset();
 		this.estadoS1 = "offline";
 		this.estadoS2 = "offline";
 		this.pulso_ant = 0;
@@ -29,7 +27,7 @@ public class Controller {
 	
 	// resetea el socketMonitor
 	public void reset() {
-		this.hilosm = new Thread(this.sm);
+		Thread hilosm = new Thread(this.sm);
 		hilosm.start();
 	}
 	

@@ -22,6 +22,7 @@ public class Main {
 				
 				);
 		controller.listen(); //activa los hilos del server para comunicaciones
+		controller.heartbeat(); //envia un pulso al monitor para demostrar que esta activo
 	}
 
 }
