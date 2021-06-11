@@ -15,7 +15,7 @@ public class AdapterLog_txt implements IAdapterLog{
             BufferedWriter out = new BufferedWriter( new FileWriter("log.txt", true) ); //filewriter -> append = true
             
             //obtener fecha y hora y sumarlo al log
-            String log = null;// = fecha + hora + accion;
+            String log = Date.getFechaYHoraActual() + " " + accion + "\n";// = fecha + hora + accion;
             
             out.write(log);
             out.close();
