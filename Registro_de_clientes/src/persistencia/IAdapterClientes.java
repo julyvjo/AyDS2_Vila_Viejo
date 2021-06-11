@@ -4,5 +4,5 @@ import dominio.Cliente;
 
 public interface IAdapterClientes {
 
-	public Cliente readCliente();
+	public Cliente readCliente(String dni);
 }

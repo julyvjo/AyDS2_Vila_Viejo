@@ -368,7 +368,11 @@ public class GUI_Registro extends JFrame implements ActionListener{
 	}
 	
 	public void mensajeRegistroExitoso() {
-		JOptionPane.showMessageDialog(this, "DNI registrado con éxito");
+		JOptionPane.showMessageDialog(this, "Turno registrado con éxito");
+	}
+	
+	public void mensajeFalloRegistro() {
+		JOptionPane.showMessageDialog(this, "El cliente no existe");
 	}
 	
 }
