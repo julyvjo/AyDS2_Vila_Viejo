@@ -31,7 +31,7 @@ public class AdapterClientes_txt implements IAdapterClientes{
             		nombre = tokens.get(1).trim();
             		categoria = tokens.get(2).trim();
             		
-            		cliente = ClienteFactory.getCliente(dni, nombre, categoria);
+            		cliente = ClienteFactory.getInstance().getCliente(dni, nombre, categoria);
             	}
             	
             	cadena = in.readLine();

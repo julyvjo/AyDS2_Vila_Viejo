@@ -85,3 +85,6 @@
 2021/06/11 23:35:50 nuevo turno        [ dni: 44444444 ] [ box: 2 ]
 2021/06/11 23:35:52 nuevo turno        [ dni: 11111111 ] [ box: 2 ]
 2021/06/11 23:35:54 nuevo turno        [ dni: 88888888 ] [ box: 2 ]
+2021/06/12 15:02:39 cliente registrado [ dni: 11111111 ]
+2021/06/12 15:02:44 cliente registrado [ dni: 22222222 ]
+2021/06/12 15:02:47 cliente registrado [ dni: 33333333 ]
