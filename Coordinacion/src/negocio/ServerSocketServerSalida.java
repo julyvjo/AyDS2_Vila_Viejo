@@ -69,6 +69,30 @@ public class ServerSocketServerSalida{
 		return cola; 
 	}
 	
+	public IStrategyCola sync_estrategia() {
+		IStrategyCola estrategia = null;
+		int puerto_envio = Controller.getInstance().getPort_server_salida();
+		
+		try {
+			Socket socket = new Socket("localhost",puerto_envio);
+			
+			ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream());
+			output.writeObject("sync_estrategia");
+			
+			ObjectInputStream input = new ObjectInputStream(socket.getInputStream());
+			estrategia = (IStrategyCola) input.readObject();
+			
+			output.close();
+			input.close();
+			socket.close();
+			
+		} catch (Exception e) {
+			//si no se puede conectar no hace nada
+		}
+		
+		return estrategia;
+	}
+	
 	/**
 	 * pide al otro servidor que quite un cliente de la cola
 	 */

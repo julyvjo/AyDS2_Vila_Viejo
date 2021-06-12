@@ -57,6 +57,12 @@ public class ServerSocketServerEntrada implements Runnable{
 					ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream());
 					output.writeObject("ping");
 					output.close();
+				}else if(msg.equals("sync_estrategia")) {
+					
+					ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream());
+					IStrategyCola estrategia = Controller.getInstance().getStrategy();
+					output.writeObject(estrategia);
+					output.close();
 				}
 
 				input.close();

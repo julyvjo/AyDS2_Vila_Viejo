@@ -18,7 +18,6 @@ public class Socket_Registro {
 			conecta(port, cliente);
 			
 		} catch(Exception e) { 		//falla al conectar con el port
-			System.out.println("host exception");
 			if(port == port1) 					//si no puede conectar con el primer puerto se cambia el port principal por el de reserva (sea cual sea de los dos)
 				port = port2;
 			else

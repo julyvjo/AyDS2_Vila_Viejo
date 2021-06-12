@@ -7,15 +7,16 @@ public class Main {
 	public static void main(String[] args) {
 
 		Controller controller = Controller.getInstance();
+		
+		System.out.println("iniciando...\n\n");
+		
 		controller.setID();
 		
 		controller.portResolve(); //invoca un metodo que setea los puertos a usar por el servidor
 		
-		if( controller.getServer_id() == 1 ) {
-			controller.setStrategy();
-		}else {
-			controller.pedirSincronizacionCola(); //pide sincronizacion al servidor activo, si no existe queda la cola de clietnes vacia
-		}
+		controller.pedirSincronizacionCola(); //pide sincronizacion al servidor activo, si no existe queda la cola de clietnes vacia
+		
+		controller.setStrategy();
 		
 
 		System.out.println("# Server running - ID = " + controller.getServer_id() + "\n");

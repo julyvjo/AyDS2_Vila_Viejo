@@ -1,12 +1,13 @@
 package negocio;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import dominio.Cliente;
 import excepciones.ColaVaciaException;
 import modelo.Cola;
 
-public class StrategyFIFO implements IStrategyCola{
+public class StrategyFIFO implements IStrategyCola, Serializable{
 
 	@Override
 	public Cliente siguiente(Cola cola) throws ColaVaciaException{

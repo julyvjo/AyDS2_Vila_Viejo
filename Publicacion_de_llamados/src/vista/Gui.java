@@ -31,12 +31,12 @@ public class Gui extends JFrame {
 	private JList list_box;
 	private JPanel panel_label_dni;
 	private JPanel panel_list_dni;
-	private JLabel label_dni;
+	private JLabel lblNombre;
 	private JList list_dni;
 	
 	//list models
 	DefaultListModel<String> modeloListaBox;
-	DefaultListModel<String> modeloListaDni;
+	DefaultListModel<String> modeloListaNombre;
 
 	/**
 	 * Launch the application.
@@ -68,7 +68,7 @@ public class Gui extends JFrame {
 		
 		//######### new de los DefaultListModels
 		this.modeloListaBox = new DefaultListModel<String>(); //box list model string
-		this.modeloListaDni = new DefaultListModel<String>(); //dni list model string
+		this.modeloListaNombre = new DefaultListModel<String>(); //dni list model string
 		
 		this.panel = new JPanel();
 		this.contentPane.add(this.panel, BorderLayout.CENTER);
@@ -132,9 +132,9 @@ public class Gui extends JFrame {
 		this.panel_label_dni.setBorder(new EmptyBorder(0, 3, 0, 0));
 		this.contenedor_der.add(this.panel_label_dni, BorderLayout.NORTH);
 		
-		this.label_dni = new JLabel("DNI");
-		this.label_dni.setFont(new Font("Tahoma", Font.PLAIN, 40));
-		this.panel_label_dni.add(this.label_dni);
+		this.lblNombre = new JLabel("Nombre");
+		this.lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		this.panel_label_dni.add(this.lblNombre);
 		
 		this.panel_list_dni = new JPanel();
 		this.panel_list_dni.setBorder(new EmptyBorder(0, 3, 0, 0));
@@ -145,24 +145,24 @@ public class Gui extends JFrame {
 		this.list_dni.setFont(new Font("Tahoma", Font.PLAIN, 50));
 		this.list_dni.setBorder(new EmptyBorder(0, 1, 0, 0));
 		this.panel_list_dni.add(this.list_dni, BorderLayout.CENTER);
-		this.list_dni.setModel(this.modeloListaDni); //agrego modelo de lista dni
+		this.list_dni.setModel(this.modeloListaNombre); //agrego modelo de lista dni
 	}
 	
 	//metodos
 	
 	//publica un nuevo turno en los JList, si hay ya 8 turnos (0 a 7) borra el de indice 0 y agrega el nuevo, sino solo agrega el nuevo
 	//incovado desde el controller cuando quiere hacer una publicación
-	public void publicarTurno(String box, String dni) {
+	public void publicarTurno(String box, String nombre) {
 		
 		if( 7 < this.modeloListaBox.size() ) {
 			this.modeloListaBox.remove(0);
 		}
 		this.modeloListaBox.addElement(box);
 		
-		if( 7 < this.modeloListaDni.size() ) {
-			this.modeloListaDni.remove(0);
+		if( 7 < this.modeloListaNombre.size() ) {
+			this.modeloListaNombre.remove(0);
 		}
-		this.modeloListaDni.addElement(dni);
+		this.modeloListaNombre.addElement(nombre);
 		
 		this.repaint();
 	}

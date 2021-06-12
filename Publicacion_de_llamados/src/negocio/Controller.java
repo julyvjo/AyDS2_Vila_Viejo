@@ -37,7 +37,7 @@ public class Controller {
 	//llama al metodo publicarTurno de la ventana pasandole los atributos para cada defaultlistmodel (box y dni)
 	public void publicarTurno(Turno turno) {
 		
-		this.ventana.publicarTurno(turno.getBox().toString(), turno.getCliente().getDni());
+		this.ventana.publicarTurno(turno.getBox().toString(), turno.getCliente().getNombre());
 	}
 	
 }

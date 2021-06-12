@@ -237,9 +237,9 @@ public class Controller {
 		}
 	}
 	
-	public void pedirSincronizacionStrategy() {
+	public IStrategyCola pedirSincronizacionStrategy() {
 		
-		//this.estrategia = this.ssss.sync_estrategia();
+		return this.ssss.sync_estrategia();
 	}
 	
 	public void writeLog(String accion) {
@@ -260,25 +260,33 @@ public class Controller {
 	
 	public void setStrategy() {
 		
-		Scanner leer = new Scanner(System.in);
+		IStrategyCola estrategia = this.pedirSincronizacionStrategy();
 		
-		System.out.println("Seleccione metodo de atencion:\n\n 1. Orden de llegada\n 2. DNI ascendente\n 3. Prioridad por categoria ");
-		
-		int n = leer.nextInt();
-		
-		while( n < 1 |3 < n ) {
+		if(estrategia == null) {
 			
-			n = leer.nextInt();
-		}
-		
-		if(n == 1) {
-			this.estrategia = new StrategyFIFO();
-		}else if(n == 2) {
-			this.estrategia = new StrategyDNIascendente();
+			Scanner leer = new Scanner(System.in);
+			
+			System.out.println("Seleccione metodo de atencion:\n\n 1. Orden de llegada\n 2. DNI ascendente\n 3. Prioridad por categoria ");
+			
+			int n = leer.nextInt();
+			
+			while( n < 1 |3 < n ) {
+				
+				n = leer.nextInt();
+			}
+			
+			if(n == 1) {
+				this.estrategia = new StrategyFIFO();
+			}else if(n == 2) {
+				this.estrategia = new StrategyDNIascendente();
+			}else {
+				this.estrategia = new StrategyCategoria();
+			}
+			
 		}else {
-			this.estrategia = new StrategyCategoria();
-		}
+			
+			this.estrategia = estrategia;
+		}	
 	}
-	
 	
 }
