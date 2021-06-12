@@ -40,16 +40,19 @@ public class GUI_Box extends JFrame implements ActionListener{
 	private JPanel panelDatos;
 	private JPanel panelCliente;
 	private JLabel lblCliente;
-	private JPanel panelDNI;
-	private JLabel lblDNI;
 	private JPanel panelBottom;
 	private JPanel panelBox;
 	private JLabel lblBox;
 	ActionListener actionListener;
 	private JPanel panelNro;
 	private JLabel lblBoxNro;
-	private JLabel lblNroDNI;
 	private JButton btnEdit;
+	private JPanel panelNombre;
+	private JLabel lblNom;
+	private JLabel lblNombre;
+	private JPanel panelDNI;
+	private JLabel lblDNI;
+	private JLabel lblNroDNI;
 
 
 	/**
@@ -122,34 +125,52 @@ public class GUI_Box extends JFrame implements ActionListener{
 		
 		this.panelMiddle = new JPanel();
 		panel2.add(panelMiddle);
-		panelMiddle.setLayout(new BorderLayout(0, 0));
+		panelMiddle.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		this.panelDatos = new JPanel();
-		panelMiddle.add(panelDatos, BorderLayout.WEST);
-		panelDatos.setLayout(new GridLayout(0, 1, 0, 0));
+		//this.panelDatos = new JPanel();
+		//panelMiddle.add(panelDatos, BorderLayout.CENTER);
+		//panelDatos.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		this.panelCliente = new JPanel();
-		panelDatos.add(panelCliente);
+		panelMiddle.add(panelCliente);
 		panelCliente.setLayout(new BorderLayout(0, 0));
 		
-		this.lblCliente = new JLabel("Cliente");
+		this.lblCliente = new JLabel(" Cliente");
 		lblCliente.setForeground(Color.DARK_GRAY);
 		lblCliente.setFont(new Font("Century Gothic", Font.PLAIN, 24));
 		panelCliente.add(lblCliente, BorderLayout.CENTER);
 		
-		this.panelDNI = new JPanel();
-		panelDatos.add(panelDNI);
-		panelDNI.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		panelDNI = new JPanel();
+		panelDNI.setLayout(null);
+		panelMiddle.add(panelDNI);
 		
-		this.lblDNI = new JLabel("DNI:");
-		lblDNI.setFont(new Font("Century Gothic", Font.PLAIN, 24));
+		lblDNI = new JLabel("DNI:");
 		lblDNI.setForeground(Color.DARK_GRAY);
+		lblDNI.setFont(new Font("Century Gothic", Font.PLAIN, 22));
+		lblDNI.setBounds(10, 11, 44, 28);
 		panelDNI.add(lblDNI);
 		
 		lblNroDNI = new JLabel("");
 		lblNroDNI.setForeground(Color.DARK_GRAY);
-		lblNroDNI.setFont(new Font("Century Gothic", Font.PLAIN, 24));
+		lblNroDNI.setFont(new Font("Century Gothic", Font.PLAIN, 22));
+		lblNroDNI.setBounds(65, 11, 391, 28);
 		panelDNI.add(lblNroDNI);
+		
+		panelNombre = new JPanel();
+		panelMiddle.add(panelNombre);
+		panelNombre.setLayout(null);
+		
+		lblNom = new JLabel("Nombre:");
+		lblNom.setBounds(10, 11, 94, 28);
+		lblNom.setFont(new Font("Century Gothic", Font.PLAIN, 22));
+		lblNom.setForeground(Color.DARK_GRAY);
+		panelNombre.add(lblNom);
+		
+		lblNombre = new JLabel("");
+		lblNombre.setBounds(114, 11, 391, 28);
+		lblNombre.setFont(new Font("Century Gothic", Font.PLAIN, 22));
+		lblNombre.setForeground(Color.DARK_GRAY);
+		panelNombre.add(lblNombre);
 		
 		this.panelBottom = new JPanel();
 		panel2.add(panelBottom);
@@ -206,8 +227,9 @@ public class GUI_Box extends JFrame implements ActionListener{
 		}
 	}
 
-	public void mostrarCliente(String dni) {
+	public void mostrarCliente(String dni, String nombre) {
 		this.lblNroDNI.setText(dni);
+		this.lblNombre.setText(nombre);
 	}
 
 
@@ -221,6 +243,4 @@ public class GUI_Box extends JFrame implements ActionListener{
 		
 		JOptionPane.showMessageDialog(this, "Error de conexión");
 	}
-
-
 }

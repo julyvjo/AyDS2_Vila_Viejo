@@ -29,7 +29,7 @@ public class ServerSocketMonitor implements Runnable{
 			socket.close();
 			
 		} catch (Exception e) {
-			Controller.getInstance().heartbeat();		// si no hay monitor comienza a enviar un pulso nuevamente
+				
 		}
 		
 	}

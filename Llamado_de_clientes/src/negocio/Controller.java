@@ -35,9 +35,9 @@ public class Controller implements ActionListener{
 			
 			
 			if(turno != null) {
-				this.ventana.mostrarCliente(turno.getCliente().getDni()); //paso el dni a la ventana para publicar
+				this.ventana.mostrarCliente(turno.getCliente().getDni(), turno.getCliente().getNombre()); //paso el dni a la ventana para publicar
 			}else if(turno == null){
-				this.ventana.mostrarCliente("");
+				this.ventana.mostrarCliente("", "");
 				this.ventana.mostrarMensajeNoHayClientes();
 			}
 			
