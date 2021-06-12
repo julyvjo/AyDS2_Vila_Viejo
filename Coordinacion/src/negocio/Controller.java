@@ -1,6 +1,9 @@
 package negocio;
 
 import excepciones.ColaVaciaException;
+
+import java.util.Scanner;
+
 import dominio.Box;
 import dominio.Cliente;
 import modelo.Cola;
@@ -21,6 +24,7 @@ public class Controller {
 	
 	
 	private Cola cola = new Cola();
+	private IStrategyCola estrategia;
 	private ServerSocketRegistro ssr = new ServerSocketRegistro();
 	private ServerSocketLlamados ssl = new ServerSocketLlamados();
 	private ServerSocketPublicacion ssp = new ServerSocketPublicacion();
@@ -70,6 +74,10 @@ public class Controller {
 	public int getServer_id() {
 		return server_id;
 	}
+	
+	public IStrategyCola getStrategy() {
+		return this.estrategia;
+	}
 
 	/**
 	 * extrae un cliente de la cola, este metodo es invocado cuando se extrae un cliente desde el server
@@ -77,7 +85,7 @@ public class Controller {
 	 */
 	public void pullCliente() {
 		try {
-			Cliente cliente = this.cola.siguiente();
+			Cliente cliente = this.estrategia.siguiente(this.cola);
 			this.notificar("Cliente extraido [ dni: " + cliente.getDni() + " ]");
 		} catch (ColaVaciaException e) {
 			//si la cola esta vacia no afecta, simplemente no se hace nada
@@ -128,8 +136,7 @@ public class Controller {
 		
 		Turno turno = null;
 		
-		Cliente cliente;
-		cliente = this.cola.siguiente();
+		Cliente cliente = this.estrategia.siguiente(this.cola);
 		
 		turno = new Turno(cliente, box);
 		this.publicarTurno(turno);
@@ -182,14 +189,10 @@ public class Controller {
 		
 		int offset = 0;
 		
-		String msg = this.ssss.ping(7000);
-		
-		if(msg == null) { //si recibe null, el otro server no está corriendo
+		if(this.server_id == 1) { //si recibe null, el otro server no está corriendo
 			offset = 0;
-			this.server_id = 1;
-		}else if(msg.equals("ping")){ //si recibe ping el otro server está corriendo
+		}else if(this.server_id == 2){ //si recibe ping el otro server está corriendo
 			offset = 100;
-			this.server_id = 2;
 		}
 		
 		this.port_registro = 4000 + offset;
@@ -234,11 +237,48 @@ public class Controller {
 		}
 	}
 	
+	public void pedirSincronizacionStrategy() {
+		
+		//this.estrategia = this.ssss.sync_estrategia();
+	}
+	
 	public void writeLog(String accion) {
 		
 		this.log.writeLog(accion);
 	}
 	
+	public void setID() {
+		
+		String msg = this.ssss.ping(7000);
+		
+		if(msg == null) { //si recibe null, el otro server no está corriendo
+			this.server_id = 1;
+		}else if(msg.equals("ping")){ //si recibe ping el otro server está corriendo
+			this.server_id = 2;
+		}
+	}
+	
+	public void setStrategy() {
+		
+		Scanner leer = new Scanner(System.in);
+		
+		System.out.println("Seleccione metodo de atencion:\n\n 1. Orden de llegada\n 2. DNI ascendente\n 3. Prioridad por categoria ");
+		
+		int n = leer.nextInt();
+		
+		while( n < 1 |3 < n ) {
+			
+			n = leer.nextInt();
+		}
+		
+		if(n == 1) {
+			this.estrategia = new StrategyFIFO();
+		}else if(n == 2) {
+			this.estrategia = new StrategyDNIascendente();
+		}else {
+			this.estrategia = new StrategyCategoria();
+		}
+	}
 	
 	
 }

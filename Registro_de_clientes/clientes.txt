@@ -1,0 +1,10 @@
+37398782 - Vila, Juan Martin - gold
+11111111 - Viejo, Julian - gold
+22222222 - Perez, Juan - gold
+33333333 - Perez, Juan - gold
+44444444 - Perez, Juan - silver
+55555555 - Perez, Juan - silver
+66666666 - Perez, Juan - silver
+77777777 - Perez, Juan - bronze
+88888888 - Perez, Juan - bronze
+99999999 - Perez, Juan - bronze

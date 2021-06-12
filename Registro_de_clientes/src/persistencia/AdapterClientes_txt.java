@@ -19,7 +19,7 @@ public class AdapterClientes_txt implements IAdapterClientes{
 		
 		try {
 			  
-			BufferedReader in = new BufferedReader(new FileReader("C:\\Users\\Martin.idea-PC\\Documents\\GitHub\\AyDS2_Vila_Viejo\\Registro_de_clientes\\src\\persistencia\\clientes.txt"));
+			BufferedReader in = new BufferedReader(new FileReader("clientes.txt"));
 			
 			nroDni = "";
             cadena = in.readLine();
