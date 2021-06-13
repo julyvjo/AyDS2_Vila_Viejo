@@ -3,7 +3,6 @@ package negocio;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import factory.ClienteFactory;
 import persistencia.AdapterClientes_txt;
 import persistencia.IAdapterClientes;
 import dominio.Cliente;
