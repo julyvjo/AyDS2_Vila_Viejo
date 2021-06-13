@@ -1,0 +1,9 @@
+11111111 - Viejo, Julian - gold
+22222222 - Vila, Juan Martin - gold
+33333333 - Perez, Juan - gold
+44444444 - Rodriguez, Milagros - silver
+55555555 - Casas, Andrea - silver
+66666666 - Bazan, Lautaro - silver
+77777777 - Vallejos, Ricardo - bronze
+88888888 - Sosa, Matias - bronze
+99999999 - Paredes, Jimena - bronze
